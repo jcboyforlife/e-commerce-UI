@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopWave</title>
+
+  <!-- Google Fonts: Syne (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+       - Logo on the left
+       - Nav links in the center
+       - Search bar + cart icon on the right
+       - Hamburger menu for mobile
+  ============================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner container">
+
+      <!-- Logo -->
+      <a href="#" class="nav-logo">Shop<span>Wave</span></a>
+
+      <!-- Hamburger (mobile only) -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Nav Links -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#footer" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right controls -->
+      <div class="nav-controls">
+
+        <!-- Search bar -->
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search products…"
+            autocomplete="off"
+          />
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+
+        <!-- Cart button -->
+        <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+          <!-- Cart icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <!-- Badge shows item count -->
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       HERO SECTION
+       - Big headline
+       - Subtext
+       - CTA button
+       - Decorative floating shapes
+  ============================================================ -->
+  <section class="hero" id="home">
+    <!-- Decorative blobs in the background -->
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+
+    <div class="hero-content container">
+      <span class="hero-tag">New Season 2026</span>
+      <h1 class="hero-title">Discover Your <em>Perfect Style</em></h1>
+      <p class="hero-sub">
+        Curated collections that blend quality with aesthetics.<br/>
+        Free shipping on orders over ₦50,000.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">Shop Now</a>
+        <a href="#categories" class="btn btn-ghost">Browse Categories</a>
+      </div>
+    </div>
+
+    <!-- Floating product badge / social proof -->
+    <div class="hero-badge">
+      <span class="badge-num">4.9★</span>
+      <span class="badge-text">Rated by 12m+ customers</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CATEGORIES SECTION
+       - Horizontal scrollable cards
+       - Clicking a category filters products
+  ============================================================ -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-sub">Find what suits your lifestyle</p>
+      </div>
+
+      <!-- Category cards rendered by JS -->
+      <div class="category-grid" id="categoryGrid"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PRODUCTS SECTION
+       - Filter bar (All + categories)
+       - Product grid rendered by JS
+  ============================================================ -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-sub">Hand-picked for quality and style</p>
+      </div>
+
+      <!-- Active filter tag display -->
+      <div class="filter-bar" id="filterBar"></div>
+
+      <!-- Products grid (JS populates this) -->
+      <div class="product-grid" id="productGrid"></div>
+
+      <!-- Empty state when search/filter returns nothing -->
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <p>😕 No products found. Try a different search or category.</p>
+        <button class="btn btn-primary" onclick="resetFilters()">Clear Filters</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" id="footer">
+    <div class="container footer-inner">
+
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Shop<span>Wave</span></a>
+        <p>Your modern lifestyle store.<br/>Quality products, delivered fast.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Twitter">TW</a>
+          <a href="#" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+
+      <!-- Links columns -->
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="#">New Arrivals</a>
+          <a href="#">Best Sellers</a>
+          <a href="#">Sale</a>
+          <a href="#">Gift Cards</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">FAQ</a>
+          <a href="#">Shipping Policy</a>
+          <a href="#">Returns</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>© 2025 ShopWave. Built for learning & portfolio purposes.</p>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       CART SIDEBAR
+       - Slides in from right
+       - Lists added items
+       - Shows total
+       - Checkout button (UI only)
+  ============================================================ -->
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" id="cartClose" aria-label="Close cart">✕</button>
+    </div>
+
+    <!-- Cart items list (JS renders here) -->
+    <div class="cart-items" id="cartItems"></div>
+
+    <!-- Cart footer with total -->
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <strong id="cartTotal">₦0</strong>
+      </div>
+      <button class="btn btn-primary btn-full">Proceed to Checkout</button>
+      <button class="btn btn-ghost btn-full" id="clearCartBtn">Clear Cart</button>
+    </div>
+  </aside>
+
+  <!-- Overlay that dims the screen when cart is open -->
+  <div class="overlay" id="overlay"></div>
+
+
+  <!-- ============================================================
+       SCRIPTS
+       Order matters:
+       1. data.js   — fake product data
+       2. cart.js   — cart logic
+       3. app.js    — rendering + search + filter logic
+  ============================================================ -->
+  <script src="data.js"></script>
+  <script src="cart.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
